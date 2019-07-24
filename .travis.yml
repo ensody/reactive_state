@@ -14,6 +14,7 @@ before_script:
   - export PATH=`pwd`/flutter/bin:`pwd`/flutter/bin/cache/dart-sdk/bin:$PATH
   - flutter doctor
   - gem install coveralls-lcov
+  - flutter pub get
 script:
   - flutter analyze
   - flutter test --coverage
