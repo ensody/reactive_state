@@ -24,7 +24,38 @@ Easy to understand state management for Flutter apps and for writing reusable Fl
 
 ## Usage
 
-Take a look at the [example](https://github.com/wkornewald/flutter_simple_state/blob/master/example/lib/main.dart) in the repo.
+A simple `AutoRebuild` example:
+
+```dart
+import 'package:flutter/material.dart';
+import 'package:flutter_simple_state/flutter_simple_state.dart';
+
+class MyPage extends StatelessWidget {
+  MyPage({Key key, @required this.counter}) : super(key: key);
+
+  final ValueNotifier<int> counter;
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(title: Text('Counter')),
+      body: Column(
+        children: <Widget>[
+          AutoRebuild(builder: (context, get, track) {
+            return Text('Counter: ${get(counter)}');
+          }),
+          MaterialButton(
+            onPressed: () => counter.value++,
+            child: Text('Increment'),
+          ),
+        ],
+      ),
+    );
+  }
+}
+```
+
+Also, take a look at the [example](https://github.com/wkornewald/flutter_simple_state/blob/master/example/lib/main.dart) in the repo.
 It shows everything you need to know.
 
 As a rule of thumb, try to avoid global state because that can make your code too tightly coupled and at some point turn into a monolithic mess.
