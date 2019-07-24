@@ -1,0 +1,52 @@
+include: package:flutter/analysis_options_user.yaml
+
+analyzer:
+  strong-mode:
+    implicit-casts: false
+    implicit-dynamic: false
+
+  errors:
+    asset_does_not_exist: ignore
+    unrecognized_error_code: ignore
+    avoid_relative_lib_imports: error
+    await_only_futures: error
+    dead_code: error
+    library_names: error
+    library_prefixes: error
+    missing_required_param: error
+    missing_return: error
+    prefer_single_quotes: error
+    return_without_value: error
+    unnecessary_brace_in_string_interps: error
+    unnecessary_const: error
+    unnecessary_getters_setters: error
+    unnecessary_lambdas: error
+    unnecessary_new: error
+    unnecessary_null_aware_assignments: error
+    unnecessary_null_in_if_null_operators: error
+    unnecessary_overrides: error
+    unnecessary_parenthesis: error
+    unnecessary_this: error
+    unused_import: error
+    unused_local_variable: error
+    no_duplicate_case_values: error
+    MISSING_ENUM_CONSTANT_IN_SWITCH: error
+
+linter:
+  rules:
+    - avoid_relative_lib_imports
+    - await_only_futures
+    - library_names
+    - library_prefixes
+    - prefer_single_quotes
+    - unnecessary_brace_in_string_interps
+    - unnecessary_const
+    - unnecessary_getters_setters
+    - unnecessary_lambdas
+    - unnecessary_new
+    - unnecessary_null_aware_assignments
+    - unnecessary_null_in_if_null_operators
+    - unnecessary_overrides
+    - unnecessary_parenthesis
+    - unnecessary_this
+    - no_duplicate_case_values
