@@ -3,18 +3,27 @@ library flutter_simple_state;
 import 'package:flutter/widgets.dart';
 import 'package:flutter/foundation.dart';
 
-/// Automatically rebuilds itself via [builder] when [Listenable]s change.
+typedef Widget AutoBuilder(
+    BuildContext context,
+    T Function<T>(ValueListenable<T> valueListenable) get,
+    S Function<S extends Listenable>(S listenable) track);
+
+/// Keeps the UI in sync with one or more [ValueListenable]s or [Listenable]s.
+/// 
+/// Given a [builder], this class will automatically register itself as a
+/// listener and keep track of the [Listener]s which the [builder] depends on.
 ///
-/// This is especially useful for managing state with [ValueNotifier], the
-/// more optimized [Value], and a custom [ValueListenable].
+/// This is especially useful for managing state with [ValueNotifier],
+/// [Value], or a custom [ValueListenable].
 ///
-/// The [builder] is passed a [_Resolver] instance which must be used for all
-/// [Listenable] and [ValueListenable] instances that your builder depends on.
+/// The [builder] is passed the `context`, a `get` and a `track` function.
+/// Call `get(valueListenable)` to retrieve the value of a [ValueListenable]
+/// instance and mark it as a dependency.
+/// Call `track(listenable)` to mark a [Listenable] as a dependency.
 class AutoRebuild extends StatefulWidget {
   AutoRebuild({Key key, @required this.builder}) : super(key: key);
 
-  final Widget Function(BuildContext context, T Function<T>(ValueListenable<T>),
-      S Function<S extends Listenable>(S)) builder;
+  final AutoBuilder builder;
 
   @override
   _AutoRebuildState createState() => _AutoRebuildState();
