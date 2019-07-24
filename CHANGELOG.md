@@ -1,5 +1,5 @@
 # Changelog
 
-## [0.5.0+3]
+## [0.5.1]
 
 * Initial public release

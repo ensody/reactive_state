@@ -1,7 +1,7 @@
 # flutter_simple_state
 
 [![Pub](https://img.shields.io/pub/v/flutter_simple_state.svg)](https://pub.dev/packages/flutter_simple_state)
-[![Build Status](https://travis-ci.com/wkornewald/flutter_simple_state.svg?branch=master)](https://travis-ci.com/wkornewald/flutter_simple_state)
+[![Build Status](https://travis-ci.com/ensody/flutter_simple_state.svg?branch=master)](https://travis-ci.com/ensody/flutter_simple_state)
 
 Easy to understand state management for Flutter apps and for writing reusable Flutter components:
 
@@ -55,7 +55,7 @@ class MyPage extends StatelessWidget {
 }
 ```
 
-Also, take a look at the [example](https://github.com/wkornewald/flutter_simple_state/blob/master/example/lib/main.dart) in the repo.
+Also, take a look at the [example](https://github.com/ensody/flutter_simple_state/blob/master/example/lib/main.dart) in the repo.
 It shows everything you need to know.
 
 As a rule of thumb, try to avoid global state because that can make your code too tightly coupled and at some point turn into a monolithic mess.

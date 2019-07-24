@@ -1,8 +1,8 @@
 name: flutter_simple_state
 description: An easy to understand and simple state management solution for Flutter.
-version: 0.5.0+3
+version: 0.5.1
 author: Waldemar Kornewald <wkornewald@gmail.com>
-homepage: https://github.com/wkornewald/flutter_simple_state
+homepage: https://github.com/ensody/flutter_simple_state
 
 environment:
   sdk: ">=2.4.0 <3.0.0"
