@@ -100,9 +100,7 @@ class HomePage extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            Text(
-              'Counter (press "+"/"-" buttons):',
-            ),
+            Text('Counter (press "+"/"-" buttons):'),
             // We use multiple AutoRebuild widgets to minimize redrawing.
             AutoRebuild(builder: (context, get, track) {
               return Text(
