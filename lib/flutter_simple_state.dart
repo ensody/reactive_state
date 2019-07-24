@@ -4,22 +4,23 @@ import 'package:flutter/widgets.dart';
 import 'package:flutter/foundation.dart';
 
 /// Automatically rebuilds itself via [builder] when [Listenable]s change.
-/// 
+///
 /// This is especially useful for managing state with [ValueNotifier], the
 /// more optimized [Value], and a custom [ValueListenable].
-/// 
+///
 /// The [builder] is passed a [_Resolver] instance which must be used for all
 /// [Listenable] and [ValueListenable] instances that your builder depends on.
 class AutoRebuild extends StatefulWidget {
   AutoRebuild({Key key, @required this.builder}) : super(key: key);
 
-  final Widget Function(BuildContext context, T Function<T>(ValueListenable<T>), S Function<S extends Listenable>(S)) builder;
+  final Widget Function(BuildContext context, T Function<T>(ValueListenable<T>),
+      S Function<S extends Listenable>(S)) builder;
 
   @override
-  AutoRebuildState createState() => AutoRebuildState();
+  _AutoRebuildState createState() => _AutoRebuildState();
 }
 
-class AutoRebuildState extends State<AutoRebuild> {
+class _AutoRebuildState extends State<AutoRebuild> {
   _ResolverState resolverState;
 
   @override
@@ -40,7 +41,8 @@ class AutoRebuildState extends State<AutoRebuild> {
 
   @override
   Widget build(BuildContext context) {
-    return resolverState.observe((_Resolver resolve) => widget.builder(context, resolve.get, resolve.track));
+    return resolverState.observe((_Resolver resolve) =>
+        widget.builder(context, resolve.get, resolve.track));
   }
 }
 
@@ -100,7 +102,7 @@ class Value<T> extends ValueNotifier<T> {
   Value(T value) : super(value);
 
   /// Mutate value and notify listeners.
-  /// 
+  ///
   /// The notification is sent even if the value is unchanged.
   /// In other words, unlike `.value = ` this doesn't check for equality of the
   /// modified value.

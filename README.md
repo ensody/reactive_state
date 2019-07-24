@@ -1,5 +1,6 @@
 # flutter_simple_state
 
+[![Pub](https://img.shields.io/pub/v/flutter_simple_state.svg)](https://pub.dev/packages/flutter_simple_state)
 [![Build Status](https://travis-ci.com/wkornewald/flutter_simple_state.svg?branch=master)](https://travis-ci.com/wkornewald/flutter_simple_state)
 
 Easy to understand state management for Flutter apps and for writing reusable Flutter components:
