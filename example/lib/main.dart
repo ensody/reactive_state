@@ -5,7 +5,7 @@
 // This can be useful for making e.g. the currently logged-in user accessible
 // from anywhere in the app.
 //
-// Actions & state values can alternatively be passed diretly as arguments.
+// Actions & state values can alternatively be passed directly as arguments.
 // This is important for writing reusable components that mustn't depend on
 // some globally accessible app-specific state.
 
