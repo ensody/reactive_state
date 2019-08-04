@@ -10,7 +10,7 @@ addons:
       - libstdc++6
       - fonts-noto
 before_script:
-  - git clone -b master --single-branch https://github.com/flutter/flutter.git /tmp/flutter
+  - git clone -b dev --single-branch https://github.com/flutter/flutter.git /tmp/flutter
   - export PATH=/tmp/flutter/bin:/tmp/flutter/bin/cache/dart-sdk/bin:$PATH
   - flutter doctor
   - gem install coveralls-lcov
