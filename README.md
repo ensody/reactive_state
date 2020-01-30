@@ -24,6 +24,8 @@ Easy to understand state management for Flutter apps and for writing reusable Fl
 
 ## Usage
 
+Note: Also see [reference](https://pub.dev/documentation/flutter_simple_state/latest/) for details.
+
 A simple `AutoRebuild` example:
 
 ```dart
@@ -64,6 +66,11 @@ Put the state/action as deeply nested (close to the leafs) in the tree as possib
 Use arguments instead of `Provider` if that's convenient enough.
 Only use global state if every part of your app depends on it (e.g. the currently logged-in user).
 
+## autorun and AutoRunner
+
+Outside of widgets you might still want to react to state changes.
+You can do that with `autorun()` and `AutoRunner` (see [reference](https://pub.dev/documentation/flutter_simple_state/latest/) for details).
+
 ## Value vs ValueNotifier
 
 As an alternative to `ValueNotifier` you can also use `flutter_simple_state`'s `Value` class which provides an `update()` method for modifying more complex objects:
@@ -84,3 +91,14 @@ userValue.update((user) {
 
 This is similar to calling `setState()` with `StatefulWidget`.
 With `update()` you can change multiple attributes and `Value` will trigger a single notification once finished - even if nothing was changed (so you don't need to implement comparison operators for complex objects).
+
+## DerivedValue
+
+`DerivedValue` is a dynamically calculated `ValueListenable` that updates its value whenever its dependencies change:
+
+```dart
+var user = Value(User());
+var emailLink = DerivedValue((get, track) => 'mailto:${get(user).email}');
+```
+
+Here, `emailLink` can be observed on its own and is updated whenever `user` is modified.
