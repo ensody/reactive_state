@@ -103,16 +103,10 @@ class HomePage extends StatelessWidget {
             Text('Counter (press "+"/"-" buttons):'),
             // We use multiple AutoRebuild widgets to minimize redrawing.
             AutoRebuild(builder: (context, get, track) {
-              return Text(
-                '${get(counter)}',
-                style: Theme.of(context).textTheme.display1,
-              );
+              return Text('${get(counter)}');
             }),
             SizedBox(height: 20),
-            Text(
-              'User data',
-              style: Theme.of(context).textTheme.display1,
-            ),
+            Text('User data'),
             AutoRebuild(builder: (context, get, track) {
               var user = get(globalState.user);
               return Column(
