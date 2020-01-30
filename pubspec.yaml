@@ -1,7 +1,6 @@
 name: flutter_simple_state
 description: An easy to understand and simple state management solution for Flutter.
 version: 0.6.0
-author: Waldemar Kornewald <wkornewald@gmail.com>
 homepage: https://github.com/ensody/flutter_simple_state
 
 environment:
