@@ -1,5 +1,10 @@
 # Changelog
 
+## [0.7.0]
+
+* Renamed package to `reactive_state` (I'm sorry, but the old name gave people the impression that this is intended for simple apps)
+* Renamed `AutoRebuild` to `AutoBuild`
+
 ## [0.6.0]
 
 * Added `DerivedValue`, `AutoRunner`, `autorun`

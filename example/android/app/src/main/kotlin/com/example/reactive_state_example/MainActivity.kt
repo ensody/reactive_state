@@ -1,4 +1,4 @@
-package com.example.flutter_simple_state_example
+package com.example.reactive_state_example
 
 import androidx.annotation.NonNull;
 import io.flutter.embedding.android.FlutterActivity

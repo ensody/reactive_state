@@ -1,4 +1,4 @@
-// This is a simple, but pretty complete flutter_simple_state example.
+// This is a simple, but pretty complete reactive_state example.
 // It demonstrates use-cases for small and large apps:
 //
 // Actions & state values can be globally accessible via Provider.
@@ -10,7 +10,7 @@
 // some globally accessible app-specific state.
 
 import 'package:flutter/material.dart';
-import 'package:flutter_simple_state/flutter_simple_state.dart';
+import 'package:reactive_state/reactive_state.dart';
 import 'package:provider/provider.dart';
 
 void main() => runApp(App());
@@ -68,7 +68,7 @@ class _AppState extends State<App> {
     return MultiProvider(
       providers: [Provider.value(value: state)],
       child: MaterialApp(
-        title: 'flutter_simple_state example',
+        title: 'reactive_state example',
         home: HomePage(counter: counter, decrement: decrement),
       ),
     );
@@ -101,13 +101,13 @@ class HomePage extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             Text('Counter (press "+"/"-" buttons):'),
-            // We use multiple AutoRebuild widgets to minimize redrawing.
-            AutoRebuild(builder: (context, get, track) {
+            // We use multiple AutoBuild widgets to minimize redrawing.
+            AutoBuild(builder: (context, get, track) {
               return Text('${get(counter)}');
             }),
             SizedBox(height: 20),
             Text('User data'),
-            AutoRebuild(builder: (context, get, track) {
+            AutoBuild(builder: (context, get, track) {
               var user = get(globalState.user);
               return Column(
                 mainAxisSize: MainAxisSize.min,
@@ -138,7 +138,7 @@ class HomePage extends StatelessWidget {
                 ],
               ),
             ),
-            AutoRebuild(builder: (context, get, track) {
+            AutoBuild(builder: (context, get, track) {
               var enabled = get(nameController).text.isNotEmpty &&
                   get(emailController).text.isNotEmpty;
               var onPressed = enabled ? () => _saveUser(globalState) : null;

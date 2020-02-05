@@ -1,5 +1,5 @@
-name: flutter_simple_state_example
-description: flutter_simple_state example project.
+name: reactive_state_example
+description: reactive_state example project.
 
 # The following defines the version and build number for your application.
 # A version number is three numbers separated by dots, like 1.2.43
@@ -26,7 +26,7 @@ dependencies:
 
   provider: ^3.0.0+1
 
-  flutter_simple_state:
+  reactive_state:
     path: ../
 
 dev_dependencies:
