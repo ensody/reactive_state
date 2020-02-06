@@ -9,7 +9,10 @@ Easy to understand reactive state management for Flutter apps and for writing re
 
 ### Observable state
 
-State is held in one or multiple instances of `Value` or similar classes implementing `ValueNotifier`. These are standard Flutter interfaces that everybody knows from `TextEditingController`, `Animation`, etc.
+State is held in one or multiple instances of `Value` or similar classes implementing `ValueNotifier`.
+These are standard Flutter interfaces that everybody knows from `TextEditingController`, `Animation`, etc.
+
+Additionally, you can use `ListValue` and `MapValue` for creating observable `List` and `Map` values that can notify you about fine-grained change events (instead of the whole value changing).
 
 ### Reactive widgets
 
@@ -25,7 +28,7 @@ Standard Flutter classes like `TextEditingController` and `Animation` implement 
 
 `DerivedValue` is an observable value that is computed (derived) from other observable values.
 
-TODO: Similar classes optimized for `List`, `Map`, `Set` are planned.
+Also, `ListValue` and `MapValue` provide `.map()` and other operations for creating derived containers that keep themselves updated on a per-element basis.
 
 ### Less boilerplate and indirection
 
@@ -111,3 +114,17 @@ var emailLink = DerivedValue((get, track) => 'mailto:${get(user).email}');
 ```
 
 Here, `emailLink` can be observed on its own and is updated whenever `user` is modified.
+
+## ListValue and MapValue
+
+A simple example showing a few things that can be done:
+
+```dart
+final listValue = ListValue(<int>[]);
+final mappedList = listValue.map((x) => x.toString());
+final listToMap = mappedList.toMap((x) => MapEntry(2 * int.parse(x), x));
+final invertedMap = listToMap.map((k, v) => MapEntry(v, k));
+
+listValue.addAll([4, 1]);
+// => invertedMap.value == {'4': 8, '1': 2}
+```
