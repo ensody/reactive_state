@@ -32,11 +32,9 @@ Also, `ListValue` and `MapValue` provide `.map()` and other operations for creat
 
 ### Less boilerplate and indirection
 
-Compared the same code to [BLoC](https://www.didierboelens.com/2018/08/reactive-programming---streams---bloc/) or Redux.
+The resulting code is much simpler than the same solution in [BLoC](https://www.didierboelens.com/2018/08/reactive-programming---streams---bloc/) or Redux.
 
-In contrast, reactive_state has:
-
-* No streams, no `StreamBuilder`, no asynchronous loading of widgets.
+* No streams, no `StreamBuilder`, no asynchronous loading of widgets (unless you really need it).
 * No special event objects, no event handlers with long `switch()` statements.
 
 ## Usage
