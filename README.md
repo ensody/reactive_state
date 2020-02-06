@@ -3,7 +3,7 @@
 [![Pub](https://img.shields.io/pub/v/reactive_state.svg)](https://pub.dev/packages/reactive_state)
 [![Build Status](https://travis-ci.com/ensody/reactive_state.svg?branch=master)](https://travis-ci.com/ensody/reactive_state)
 
-Easy to understand reactive state management for Flutter apps and for writing reusable Flutter components.
+An easy to understand reactive state management solution for Flutter.
 
 ## Principles
 
