@@ -1,6 +1,6 @@
 # Changelog
 
-## [0.7.0]
+## [0.7.0-dev.1]
 
 ATTENTION: This release comes with a few breaking changes.
 

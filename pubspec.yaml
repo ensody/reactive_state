@@ -1,6 +1,6 @@
 name: reactive_state
 description: An easy to understand reactive state management solution for Flutter.
-version: 0.7.0
+version: 0.7.0-dev.1
 homepage: https://github.com/ensody/reactive_state
 
 environment:
