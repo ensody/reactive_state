@@ -10,11 +10,8 @@ class DerivedValue<T> extends ChangeNotifier implements ValueListenable<T> {
     _autoRunner = AutoRunner(callback, onChange: _onChange);
   }
 
-  @protected
   AutoRunner<T> _autoRunner;
-  @protected
   T _value;
-  @protected
   bool _upToDate = false;
 
   @override

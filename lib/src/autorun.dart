@@ -30,7 +30,7 @@ class AutoRunner<T> {
 
   T run() {
     return _resolverState
-        .observe((_Resolver resolve) => builder(resolve.get, resolve.track));
+        .observe((Resolver resolver) => builder(resolver.get, resolver.track));
   }
 }
 
@@ -49,11 +49,11 @@ AutoRunner<void> autorun(AutoRunCallback builder, {VoidCallback onChange}) =>
 
 class _ResolverState {
   _ResolverState(this.listener) {
-    _resolve = _Resolver(this);
+    _resolve = Resolver(this);
   }
 
   final VoidCallback listener;
-  _Resolver _resolve;
+  Resolver _resolve;
 
   void dispose() {
     observe((_) {});
@@ -61,8 +61,8 @@ class _ResolverState {
 
   bool isListening(Listenable listenable) => _resolve.isListening(listenable);
 
-  T observe<T>(T func(_Resolver resolve)) {
-    final resolve = _Resolver(this);
+  T observe<T>(T func(Resolver resolve)) {
+    final resolve = Resolver(this);
     try {
       return func(resolve);
     } finally {
@@ -74,14 +74,18 @@ class _ResolverState {
   }
 }
 
-/// Observes [Listenable] instances, so [AutoBuild] can redraw itself when necessary.
-class _Resolver {
-  _Resolver(this._state);
+/// Observes [Listenable] instances, so [AutoBuild] can redraw itself when
+/// necessary.
+class Resolver {
+  Resolver(this._state);
 
   final _ResolverState _state;
   final _listenables = <Listenable>{};
 
   bool isListening(Listenable listenable) => _listenables.contains(listenable);
+
+  /// Shorthand for [get].
+  T call<T>(ValueListenable<T> listenable) => get(listenable);
 
   /// Shorthand to get the [ValueListenable.value] and [track] the listenable.
   T get<T>(ValueListenable<T> listenable) {
