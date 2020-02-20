@@ -158,7 +158,7 @@ class MappedListValue<T, TIn> extends BaseListValue<T> {
     parent.addContainerListener(_onChange);
   }
 
-  final ObservableContainer<List<TIn>, ListChanged<TIn>> parent;
+  final BaseListValue<TIn> parent;
   final T Function(TIn value) func;
   final List<T> _value;
 
@@ -175,12 +175,8 @@ class MappedListValue<T, TIn> extends BaseListValue<T> {
     final removed =
         _value.sublist(change.start, change.start + change.removed.length);
     final added = change.added.map<T>(func);
-    if (change.removed.isNotEmpty) {
-      _value.removeRange(change.start, change.start + change.removed.length);
-    }
-    if (change.added.isNotEmpty) {
-      _value.insertAll(change.start, added);
-    }
+    _value.replaceRange(
+        change.start, change.start + change.removed.length, added);
     notify(ListChanged<T>(change.start, removed, added));
   }
 }

@@ -85,7 +85,7 @@ class MappedMapValue<K, V, KIn, VIn> extends BaseMapValue<K, V> {
     parent.addContainerListener(_onChange);
   }
 
-  final ObservableContainer<Map<KIn, VIn>, MapChanged<KIn, VIn>> parent;
+  final BaseMapValue<KIn, VIn> parent;
   final MapEntry<K, V> Function(KIn key, VIn value) func;
   final Map<K, V> _value;
 
@@ -101,28 +101,25 @@ class MappedMapValue<K, V, KIn, VIn> extends BaseMapValue<K, V> {
   void _onChange(MapChanged<KIn, VIn> change) {
     final removed = change.removed.map(func);
     final added = change.added.map(func);
-    if (change.removed.isNotEmpty) {
-      for (var key in removed.keys) {
-        _value.remove(key);
-      }
+    for (var key in removed.keys) {
+      _value.remove(key);
     }
-    if (change.added.isNotEmpty) {
-      _value.addAll(added);
-    }
+    _value.addAll(added);
     notify(MapChanged<K, V>(removed, added));
   }
 }
 
 /// An observable Map, sourced from an observable List.
 class ListToMapValue<K, V, T> extends BaseMapValue<K, V> {
-  ListToMapValue(this.parent, this.func)
-      : _value = Map.fromEntries(parent.value.map(func)) {
+  ListToMapValue(this.parent, this.func) {
+    _value.addEntries(_mapping..addAll(parent.value.map(func)));
     parent.addContainerListener(_onChange);
   }
 
   final ObservableContainer<List<T>, ListChanged<T>> parent;
   final MapEntry<K, V> Function(T item) func;
-  final Map<K, V> _value;
+  final _value = <K, V>{};
+  final _mapping = <MapEntry<K, V>>[];
 
   @override
   Map<K, V> get value => Map.unmodifiable(_value);
@@ -134,16 +131,16 @@ class ListToMapValue<K, V, T> extends BaseMapValue<K, V> {
   }
 
   void _onChange(ListChanged<T> change) {
-    final removed = Map.fromEntries(change.removed.map(func));
-    final added = Map.fromEntries(change.added.map(func));
-    if (removed.isNotEmpty) {
-      for (var key in removed.keys) {
-        _value.remove(key);
-      }
+    final removed = Map.fromEntries(
+        _mapping.sublist(change.start, change.start + change.removed.length));
+    final addedMapped = change.added.map(func);
+    _mapping.replaceRange(
+        change.start, change.start + change.removed.length, addedMapped);
+    final added = Map.fromEntries(addedMapped);
+    for (var key in removed.keys) {
+      _value.remove(key);
     }
-    if (added.isNotEmpty) {
-      _value.addAll(added);
-    }
+    _value.addAll(added);
     notify(MapChanged<K, V>(removed, added));
   }
 }
