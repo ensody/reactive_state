@@ -2,7 +2,8 @@ import 'package:flutter/foundation.dart';
 
 import 'autorun.dart';
 
-/// Similar to [ValueNotifier], but calculates its value based on the given callback.
+/// Similar to [ValueNotifier], but calculates its value based on the given
+/// callback.
 ///
 /// The resulting value is cached and only updated lazily.
 class DerivedValue<T> extends ChangeNotifier implements ValueListenable<T> {
