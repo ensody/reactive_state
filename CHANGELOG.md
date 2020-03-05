@@ -1,29 +1,20 @@
 # Changelog
 
-## Next release
+## Next release (master)
 
-ATTENTION: In addition to the 0.7.0-dev changes:
+ATTENTION: For those upgrading from `flutter_simple_state`, this release comes with a few breaking changes.
 
-* Renamed `autorun` to `autoRun`
-
-## 0.7.0-dev.1
-
-ATTENTION: This release comes with a few breaking changes.
-
-* Renamed package to `reactive_state` (I'm sorry, but the old name gave people the impression that this is intended for simple apps)
+* Renamed package to `reactive_state`
 * Renamed `AutoRebuild` to `AutoBuild`
+* Renamed `autorun` to `autoRun`
 * Added `ListValue` and `MapValue` which allow observing individual change events
 * Added `.map()` and other operations allowing to create derived observable lists and maps more efficiently than with `DerivedValue`
 
-## 0.6.0
+## 0.7.0-dev.1
 
-* Added `DerivedValue`, `AutoRunner`, `autorun`
-* Upgraded to Dart 2.7
+ATTENTION: For those upgrading from `flutter_simple_state`, this release comes with a few breaking changes.
 
-## 0.5.1+2
-
-* Fixed typo in example (thanks [Timm Preetz](https://github.com/tp))
-
-## 0.5.1+1
-
-* Initial public release
+* Renamed package to `reactive_state`
+* Renamed `AutoRebuild` to `AutoBuild`
+* Added `ListValue` and `MapValue` which allow observing individual change events
+* Added `.map()` and other operations allowing to create derived observable lists and maps more efficiently than with `DerivedValue`
