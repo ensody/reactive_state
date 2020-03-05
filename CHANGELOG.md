@@ -1,6 +1,12 @@
 # Changelog
 
-## [0.7.0-dev.1]
+## Next release
+
+ATTENTION: In addition to the 0.7.0-dev changes:
+
+* Renamed `autorun` to `autoRun`
+
+## 0.7.0-dev.1
 
 ATTENTION: This release comes with a few breaking changes.
 
@@ -9,15 +15,15 @@ ATTENTION: This release comes with a few breaking changes.
 * Added `ListValue` and `MapValue` which allow observing individual change events
 * Added `.map()` and other operations allowing to create derived observable lists and maps more efficiently than with `DerivedValue`
 
-## [0.6.0]
+## 0.6.0
 
 * Added `DerivedValue`, `AutoRunner`, `autorun`
 * Upgraded to Dart 2.7
 
-## [0.5.1+2]
+## 0.5.1+2
 
 * Fixed typo in example (thanks [Timm Preetz](https://github.com/tp))
 
-## [0.5.1+1]
+## 0.5.1+1
 
 * Initial public release
