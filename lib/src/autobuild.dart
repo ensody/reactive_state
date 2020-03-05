@@ -1,5 +1,5 @@
-import 'package:flutter/widgets.dart';
 import 'package:flutter/foundation.dart';
+import 'package:flutter/widgets.dart';
 
 import 'autorun.dart';
 
@@ -31,13 +31,14 @@ class AutoBuild extends StatefulWidget {
 
 class _AutoBuildState extends State<AutoBuild> {
   AutoRunner<Widget> _autoRunner;
+  Widget _cache;
 
   @override
   void initState() {
     super.initState();
     _autoRunner = AutoRunner(
         (get, track) => widget.builder(context, get, track),
-        onChange: () => setState(() {}));
+        onChange: () => setState(() => _cache = null));
   }
 
   @override
@@ -47,7 +48,5 @@ class _AutoBuildState extends State<AutoBuild> {
   }
 
   @override
-  Widget build(BuildContext context) {
-    return _autoRunner.run();
-  }
+  Widget build(BuildContext context) => _cache ??= _autoRunner.run();
 }
