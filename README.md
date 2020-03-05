@@ -76,10 +76,10 @@ Note that in real-world applications you shouldn't directly mutate the state, bu
 
 Also, take a look at the [example](https://github.com/ensody/reactive_state/blob/master/example/lib/main.dart) in the repo.
 
-## autorun and AutoRunner
+## autoRun and AutoRunner
 
 Outside of widgets you might still want to react to state changes.
-You can do that with `autorun()` and `AutoRunner` (see [reference](https://pub.dev/documentation/reactive_state/latest/) for details).
+You can do that with `autoRun()` and `AutoRunner` (see [reference](https://pub.dev/documentation/reactive_state/latest/) for details).
 
 ## Value vs ValueNotifier
 
