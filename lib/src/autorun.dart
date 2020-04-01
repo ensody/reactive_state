@@ -52,7 +52,7 @@ class AutoRunner<T> implements _BaseAutoRunner {
   /// Calls [observer] and tracks its dependencies.
   T run() {
     return _observe(
-            (Resolver resolver) => observer(resolver.get, resolver.track));
+        (Resolver resolver) => observer(resolver.get, resolver.track));
   }
 
   T _observe<T>(T func(Resolver resolve)) {
